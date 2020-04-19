@@ -4,5 +4,5 @@
 
 cd /
 cd home/pi/Desktop/subway_data
-sudo python importdata.py
+sudo python3 importdata.py
 cd /
