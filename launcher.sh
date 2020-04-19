@@ -3,6 +3,6 @@
 # navigate to home directory, then to this directory, then execute python script, then back home
 
 cd /
-cd home/pi/mta-led
+cd home/pi/Desktop/subway_data
 sudo python importdata.py
 cd /
