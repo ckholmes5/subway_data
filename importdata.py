@@ -1,7 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 from google.transit import gtfs_realtime_pb2
 #import nyct_subway_pb2
-import urllib.request
+import urllib#.request
 import datetime
 from time import sleep
 import math
@@ -16,7 +16,7 @@ while True:
 	try:
 		sleep(20)
 		mtafeed = gtfs_realtime_pb2.FeedMessage()
-		response = urllib.request.urlopen('http://datamine.mta.info/mta_esi.php?key=' + MTA_KEY + '&feed_id=26')
+		response = urllib.urlopen('http://datamine.mta.info/mta_esi.php?key=' + MTA_KEY + '&feed_id=26')
 		mtafeed.ParseFromString(response.read())
 		current_time = datetime.datetime.now()
 		for stop in STOP_IDS:
