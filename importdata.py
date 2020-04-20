@@ -53,8 +53,8 @@ while True:
 					staticimg = Image.open('staticimages/' + stop[0] + stop[3] + '.ppm')
 
 				draw = ImageDraw.Draw(staticimg)
-				#font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 12)
-				font = ImageFont.truetype('/Library/Fonts/Helvetica-Regular.ttf', 14)
+				font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 12)
+				#font = ImageFont.truetype('/Library/Fonts/Helvetica-Regular.ttf', 14)
 				draw.text((22, 3), out,(200,200,200),font=font)
 				staticimg.save('dynamicimages/dynamictime.ppm')
 				times = []
