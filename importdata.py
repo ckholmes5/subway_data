@@ -1,5 +1,4 @@
 from PIL import Image, ImageFont, ImageDraw
-from google.transit import gtfs_realtime_pb2
 import urllib.request
 import datetime
 from time import sleep
