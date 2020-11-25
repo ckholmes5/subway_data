@@ -52,6 +52,7 @@ while True:
                     out = out[:-2]
                     print(STOP_IDS)
                     if route:
+                        print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
                         staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
                     else:
                         print('herw!')
@@ -72,5 +73,3 @@ while True:
 
         # Need to classify it as a B or a C stop
         # Know how to classify based on the other stops
-        
-
