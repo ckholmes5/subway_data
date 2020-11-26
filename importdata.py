@@ -59,7 +59,7 @@ while True:
                 print(out)
                 if route:
                     print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[ROUTE] + '.ppm')
-                    staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
+                    staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[ROUTE] + '.ppm')
                 # else:
                 #     print('/home/pi/Desktop/git/subway_data/staticimages/' + stop[0] + stop[3] + '.ppm')
                 #     # staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + stop[0] + stop[3] + '.ppm')
