@@ -56,7 +56,7 @@ while True:
                 out+=str(', ')
             out = out[:-2]
             if len(out) == 0:
-                out = 'None.'
+                out = 'NO TRAINS'
             print(out)
             print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[ROUTE] + '.ppm')
             staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[ROUTE] + '.ppm')
