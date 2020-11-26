@@ -45,8 +45,6 @@ while True:
                     else:
                         continue
 
-            # if proceed:
-            print('proeeded!', proceed)
             times.sort()
             for time in times:
                 if time < 0:
@@ -56,29 +54,19 @@ while True:
                 out+=str(', ')
             out = out[:-2]
             if len(out) == 0:
-                out = '∞'
+                out = 'N/A'
             print(out)
             print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[ROUTE] + '.ppm')
             staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[ROUTE] + '.ppm')
 
             draw = ImageDraw.Draw(staticimg)
-            #font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 60)
-
-            if out == '∞':
-                font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 24)
-            else:
-                font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 12)
+            font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 12)
             draw.text((25, 2), out,(100,100,100), font = font)
             staticimg.save('/home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             times = []
             out = ''
 
             os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 5 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
+
     except Exception:
         print (traceback.format_exc())
-
-
-
-
-        # Need to classify it as a B or a C stop
-        # Know how to classify based on the other stops
