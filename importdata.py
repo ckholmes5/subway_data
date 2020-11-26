@@ -63,7 +63,11 @@ while True:
 
             draw = ImageDraw.Draw(staticimg)
             #font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 60)
-            font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 12)
+
+            if out == '∞':
+                font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 24)
+            else:
+                font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSans.ttf', 12)
             draw.text((25, 2), out,(100,100,100), font = font)
             staticimg.save('/home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             times = []
