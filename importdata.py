@@ -43,6 +43,7 @@ while True:
                             continue
 
                 if proceed:
+                    print('proeeded!', proceed)
                     times.sort()
                     for time in times:
                         if time < 0:
@@ -51,12 +52,12 @@ while True:
                         out+=str(time)
                         out+=str(', ')
                     out = out[:-2]
-                    print(STOP_IDS)
+                    # print(STOP_IDS)
                     if route:
-                        print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
+                        # print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
                         staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
                     else:
-                        print('herw!')
+                        # print('herw!')
                         staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + stop[0] + stop[3] + '.ppm')
 
                     draw = ImageDraw.Draw(staticimg)
