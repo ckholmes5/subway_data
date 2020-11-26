@@ -40,6 +40,7 @@ while True:
                                 current_time = datetime.datetime.now(timezone.utc)
                                 time = math.trunc(((time - current_time).total_seconds()) / 60)
                                 times.append(time)
+
                     else:
                         continue
 
@@ -64,7 +65,7 @@ while True:
             times = []
             out = ''
 
-            os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 5 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
+            os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
 
     except Exception:
         print (traceback.format_exc())
