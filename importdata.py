@@ -36,7 +36,7 @@ while True:
                         if (route and 'A19S' in stops) | (not route):
                             proceed = True
                             for update in entity['trip_update']['stop_time_update']:
-                                if update['stop_id'] == stop:
+                                if update['stop_id'] == 'A19S':
                                     time = update['arrival']['time']
                                     current_time = datetime.datetime.now(timezone.utc)
                                     time = math.trunc(((time - current_time).total_seconds()) / 60)
