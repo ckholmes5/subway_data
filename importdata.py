@@ -7,7 +7,7 @@ from config import *
 import traceback
 import os
 from underground import metadata, SubwayFeed
-from datetime import timezone
+from datetime import timezonei
 
 blah_blah = 'AZnp59cTqw206YpJgG5WO2DCbHVkOTNE44V8XtJY'
 stop = 'A19S'
@@ -63,7 +63,7 @@ while True:
 
             draw = ImageDraw.Draw(staticimg)
             #font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 60)
-            font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSerif.ttf', 12)
+            font = ImageFont.truetype('arial.tff', 12)
             draw.text((25, 4), out,(255,255,255))
             staticimg.save('/home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             times = []
