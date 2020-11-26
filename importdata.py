@@ -27,6 +27,7 @@ while True:
             for stop in STOP_IDS:
                 proceed = False
                 route = UNIQUE_STOPS[STOP_IDS[stop]]
+                print(route)
                 for entity in feed['entity']:
                     if entity['trip_update'] and entity['trip_update']['stop_time_update'] is not None:
                         stops = [update['stop_id'] for update in entity['trip_update']['stop_time_update']]
