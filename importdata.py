@@ -10,14 +10,14 @@ from underground import metadata, SubwayFeed
 from datetime import timezone
 
 blah_blah = 'AZnp59cTqw206YpJgG5WO2DCbHVkOTNE44V8XtJY'
-stop = 'A19S'
+stop_code = 'A19S' # Found in subway_data/StaticData/stops.txt
 
 times = []
 out = ''
 
 while True:
     try:
-        sleep(1)
+        #sleep(1)
         STOP_IDS = {'B': 'BS', 'C': 'CS'}
         for train_line in ['B','C']:
             print('hereeeeeeee', train_line)
@@ -26,7 +26,6 @@ while True:
             feed = feed.dict()
             current_time = datetime.datetime.now()
 
-            # for stop in STOP_IDS:
             proceed = False
             route = UNIQUE_STOPS[STOP_IDS[ROUTE]]
             print('route: ', route, 'stop: ', UNIQUE_STOPS[STOP_IDS[ROUTE]])
@@ -35,7 +34,6 @@ while True:
                 if entity['trip_update'] and entity['trip_update']['stop_time_update'] is not None:
                     stops = [update['stop_id'] for update in entity['trip_update']['stop_time_update']]
                     if (route and 'A19S' in stops) | (not route):
-                        # proceed = True
                         for update in entity['trip_update']['stop_time_update']:
                             if update['stop_id'] == 'A19S':
                                 time = update['arrival']['time']
