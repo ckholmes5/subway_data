@@ -3,7 +3,6 @@ import urllib.request
 import datetime
 from time import sleep
 import math
-import os
 from config import *
 import traceback
 import os
@@ -11,7 +10,7 @@ from underground import metadata, SubwayFeed
 from datetime import timezone
 
 blah_blah = 'AZnp59cTqw206YpJgG5WO2DCbHVkOTNE44V8XtJY'
-ROUTE = 'C'
+stop = 'A19S'
 
 times = []
 out = ''
@@ -19,20 +18,22 @@ out = ''
 while True:
     try:
         sleep(1)
-        for route in ['B','C']:
-            ROUTE = route
+        STOP_IDS = {'B': 'BS', 'C': 'CS'}
+        for train_line in ['B','C']:
+            ROUTE = train_line
             feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
             feed = feed.dict()
+
             current_time = datetime.datetime.now()
             for stop in STOP_IDS:
                 proceed = False
-                print('route: ', route, 'stop: ', UNIQUE_STOPS[STOP_IDS[stop]])
                 route = UNIQUE_STOPS[STOP_IDS[stop]]
+                print('route: ', route, 'stop: ', UNIQUE_STOPS[STOP_IDS[stop]])
 
                 for entity in feed['entity']:
                     if entity['trip_update'] and entity['trip_update']['stop_time_update'] is not None:
                         stops = [update['stop_id'] for update in entity['trip_update']['stop_time_update']]
-                        if (route and route in stops) | (not route):
+                        if (route and 'A19S' in stops) | (not route):
                             proceed = True
                             for update in entity['trip_update']['stop_time_update']:
                                 if update['stop_id'] == stop:
@@ -53,12 +54,11 @@ while True:
                         out+=str(time)
                         out+=str(', ')
                     out = out[:-2]
-                    # print(STOP_IDS)
                     if route:
-                        # print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
+                        print('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
                         staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + STOP_IDS[stop] + '.ppm')
                     else:
-                        # print('herw!')
+                        print('/home/pi/Desktop/git/subway_data/staticimages/' + stop[0] + stop[3] + '.ppm')
                         staticimg = Image.open('/home/pi/Desktop/git/subway_data/staticimages/' + stop[0] + stop[3] + '.ppm')
 
                     draw = ImageDraw.Draw(staticimg)
@@ -67,6 +67,7 @@ while True:
                     staticimg.save('/home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
                     times = []
                     out = ''
+
                 os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 5 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
     except Exception:
         print (traceback.format_exc())
