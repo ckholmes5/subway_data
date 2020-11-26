@@ -7,7 +7,7 @@ from config import *
 import traceback
 import os
 from underground import metadata, SubwayFeed
-from datetime import timezonei
+from datetime import timezone
 
 blah_blah = 'AZnp59cTqw206YpJgG5WO2DCbHVkOTNE44V8XtJY'
 stop = 'A19S'
