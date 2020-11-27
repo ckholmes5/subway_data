@@ -33,6 +33,7 @@ while True:
 
         STOP_IDS = {'B': 'BS', 'C': 'CS'}
         for train_line in ['B','C']:
+            sleep(5)
             print('hereeeeeeee', train_line)
             ROUTE = train_line
             if counter == 0:
