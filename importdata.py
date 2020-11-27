@@ -32,8 +32,8 @@ while True:
             sleep(3)
             print('hereeeeeeee', train_line)
             ROUTE = train_line
-            if counter == 0:
-                feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
+            # if counter == 0:
+            feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
             feed = feed.dict()
             current_time = datetime.datetime.now()
 
@@ -75,8 +75,8 @@ while True:
             staticimg.save('/home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             times = []
             out = ''
-            if __name__ == "__main__":
-                Thread(target = func2, args = (ROUTE)).start()
+            # if __name__ == "__main__":
+            #     Thread(target = func2, args = (ROUTE)).start()
 
             os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 10 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             counter += 1
