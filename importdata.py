@@ -29,6 +29,7 @@ counter = 0
 
 while True:
     try:
+
         STOP_IDS = {'B': 'BS', 'C': 'CS'}
         for train_line in ['B','C']:
             print('hereeeeeeee', train_line)
@@ -77,9 +78,10 @@ while True:
             times = []
             out = ''
 
-            if __name__ == '__main__':
-                Thread(target = func1).start()
-                Thread(target = func2, args = (ROUTE)).start()
+            Thread(target = func1).start()
+            Thread(target = func2, args = (ROUTE)).start()
+            sleep(2)
             counter += 1
+
     except Exception:
         print (traceback.format_exc())
