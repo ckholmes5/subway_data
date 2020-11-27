@@ -24,7 +24,7 @@ def func2(ROUTE):
     print('here we are!')
     global feed
     feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
-    pdb.set_trace()
+    import pdb; pdb.set_trace()
 
 counter = 0
 
@@ -78,9 +78,10 @@ while True:
             staticimg.save('/home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             times = []
             out = ''
-            Thread(target = func1).start()
-            Thread(target = func2, args = (ROUTE)).start()
-            # import pdb; pdb.set_trace()
+            if __name__ == "__main__":
+                Thread(target = func1).start()
+                Thread(target = func2, args = (ROUTE)).start()
+
             sleep(2)
             counter += 1
 
