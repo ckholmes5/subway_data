@@ -8,7 +8,7 @@ import traceback
 import os
 from underground import metadata, SubwayFeed
 from datetime import timezone
-from threading import thread
+from threading import Thread
 import concurrent.futures
 
 blah_blah = 'AZnp59cTqw206YpJgG5WO2DCbHVkOTNE44V8XtJY'
