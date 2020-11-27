@@ -24,6 +24,7 @@ def func2(ROUTE):
     print('here we are!')
     global feed
     feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
+    pdb.set_trace()
 
 counter = 0
 
