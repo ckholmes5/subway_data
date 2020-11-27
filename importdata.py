@@ -17,10 +17,6 @@ stop_code = 'A19S' # Found in subway_data/StaticData/stops.txt
 times = []
 out = ''
 
-def func1():
-    os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 10 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
-    sleep(5)
-
 def func2(ROUTE):
     print('here we are!')
     global feed
@@ -33,7 +29,7 @@ while True:
 
         STOP_IDS = {'B': 'BS', 'C': 'CS'}
         for train_line in ['B','C']:
-            sleep(5)
+            sleep(3)
             print('hereeeeeeee', train_line)
             ROUTE = train_line
             if counter == 0:
@@ -80,11 +76,11 @@ while True:
             times = []
             out = ''
             if __name__ == "__main__":
-                Thread(target = func1).start()
                 Thread(target = func2, args = (ROUTE)).start()
 
-            sleep(2)
+            os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 10 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             counter += 1
+
 
     except Exception:
         print (traceback.format_exc())
