@@ -25,17 +25,16 @@ def func2(ROUTE):
     global feed
     feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
 
-feed = SubwayFeed.get('C', api_key=blah_blah)
+counter = 0
 
-func2(C)
 while True:
     try:
-        #sleep(1)
         STOP_IDS = {'B': 'BS', 'C': 'CS'}
         for train_line in ['B','C']:
             print('hereeeeeeee', train_line)
             ROUTE = train_line
-            # feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
+            if counter == 0:
+                feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
             feed = feed.dict()
             current_time = datetime.datetime.now()
 
@@ -81,6 +80,6 @@ while True:
             if __name__ == '__main__':
                 Thread(target = func1).start()
                 Thread(target = func2, args = (ROUTE)).start()
-
+            counter += 1
     except Exception:
         print (traceback.format_exc())
