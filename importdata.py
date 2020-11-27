@@ -77,9 +77,9 @@ while True:
             staticimg.save('/home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
             times = []
             out = ''
-
             Thread(target = func1).start()
             Thread(target = func2, args = (ROUTE)).start()
+            import pdb; pdb.set_trace()
             sleep(2)
             counter += 1
 
