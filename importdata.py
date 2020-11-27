@@ -8,6 +8,8 @@ import traceback
 import os
 from underground import metadata, SubwayFeed
 from datetime import timezone
+from threading import thread
+import concurrent.futures
 
 blah_blah = 'AZnp59cTqw206YpJgG5WO2DCbHVkOTNE44V8XtJY'
 stop_code = 'A19S' # Found in subway_data/StaticData/stops.txt
@@ -15,6 +17,17 @@ stop_code = 'A19S' # Found in subway_data/StaticData/stops.txt
 times = []
 out = ''
 
+def func1():
+    os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 10 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
+
+def func2(ROUTE):
+    print('here we are!')
+    global feed
+    feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
+
+feed = SubwayFeed.get('C', api_key=blah_blah)
+
+func2(C)
 while True:
     try:
         #sleep(1)
@@ -22,7 +35,7 @@ while True:
         for train_line in ['B','C']:
             print('hereeeeeeee', train_line)
             ROUTE = train_line
-            feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
+            # feed = SubwayFeed.get(ROUTE, api_key=blah_blah)
             feed = feed.dict()
             current_time = datetime.datetime.now()
 
@@ -65,7 +78,9 @@ while True:
             times = []
             out = ''
 
-            os.system('sudo /home/pi/Desktop/git/subway_data/rpi-rgb-led-matrix/examples-api-use/./demo --led-rows=16 --led-cols=32 --led-chain=2 -t 10 --led-brightness=20 --led-slowdown-gpio=4 -D 1 -m 0 /home/pi/Desktop/git/subway_data/dynamicimages/dynamictime.ppm')
-            print('here we are!')
+            if __name__ == '__main__':
+                Thread(target = func1).start()
+                Thread(target = func2, args = (ROUTE)).start()
+
     except Exception:
         print (traceback.format_exc())
